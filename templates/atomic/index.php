@@ -38,8 +38,46 @@ $app = JFactory::getApplication();
 
 		<!-- The following line loads the template JavaScript file located in the template folder. It's blank by default. -->
 		<script type="text/javascript" src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/template.js"></script>
+
+		<!-- bootstrap -->
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+		<script src="https://code.jquery.com/jquery.js"></script>
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 	</head>
 	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Bootstrap theme</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+          	<jdoc:include type="module" name="virtuemart_category" style="sidebar" />
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
 		<div class="container">
 			<hr class="space" />
 			<div class="joomla-header span-16 append-1">
@@ -71,14 +109,12 @@ $app = JFactory::getApplication();
 			 	<div class="span-7 colborder">
 					<jdoc:include type="modules" name="atomic-bottomleft" style="bottommodule" />
 					<jdoc:include type="modules" name="position-11" style="bottommodule" />
-
-	        	</div>
-	        <?php endif; ?>
-
-	        <?php if($this->countModules('atomic-bottommiddle') or $this->countModules('position-9')
+      	</div>
+      <?php endif; ?>
+      <?php if($this->countModules('atomic-bottommiddle') or $this->countModules('position-9')
 				or $this->countModules('position-10')) : ?>
 				<div class="span-7 last">
-	        		<jdoc:include type="modules" name="atomic-bottommiddle" style="bottommodule" />
+      		<jdoc:include type="modules" name="atomic-bottommiddle" style="bottommodule" />
 					<jdoc:include type="modules" name="position-9" style="bottommodule" />
 					<jdoc:include type="modules" name="position-10" style="bottommodule" />
 
@@ -90,6 +126,7 @@ $app = JFactory::getApplication();
 			|| $this->countModules('position-3') || $this->countModules('position-6') || $this->countModules('position-8'))
 			: ?>
 				<div class="span-7 last">
+					
 					<jdoc:include type="modules" name="atomic-sidebar" style="sidebar" />
 					<jdoc:include type="modules" name="position-7" style="sidebar" />
 					<jdoc:include type="modules" name="position-4" style="sidebar" />
