@@ -68,9 +68,9 @@ if (empty($this->keyword) and !empty($this->category)) {
 		<div class="col-md-6" style="margin-bottom: 20px;">
 			<?php 
 				if ($product->file_url === 'images/stories/virtuemart/product/') {
-					$img_src = JURI::root() . 'components/com_virtuemart/assets/images/vmgeneral/noimage.gif';
+					$img_src = 'components/com_virtuemart/assets/images/vmgeneral/noimage.gif';
 				} else {
-					$img_src = JURI::root() . $product->file_url;
+					$img_src = $product->file_url;
 				}
 			?>
 			<div class="row">
