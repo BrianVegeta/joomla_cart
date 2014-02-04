@@ -66,16 +66,10 @@ if (empty($this->keyword) and !empty($this->category)) {
 	<?php $product = $this->products[0]; ?>
 	<div class="row">
 		<div class="col-md-6" style="margin-bottom: 20px;">
-			<?php 
-				if ($product->file_url === 'images/stories/virtuemart/product/') {
-					$img_src = 'components/com_virtuemart/assets/images/vmgeneral/noimage.gif';
-				} else {
-					$img_src = $product->file_url;
-				}
-			?>
+			
 			<div class="row">
 				<div class="col-md-6">
-					<img src="<?php echo $img_src; ?>" class="img-rounded" style="width: 100%; border: solid #CAC9C9 1px;">
+					<img src="<?php echo $product->file_url; ?>" class="img-rounded" style="width: 100%; border: solid #CAC9C9 1px;">
 				</div>
 				<div class="col-md-6">
 					<h4><?php echo JHTML::link ($product->link, $product->product_name); ?></h4>
