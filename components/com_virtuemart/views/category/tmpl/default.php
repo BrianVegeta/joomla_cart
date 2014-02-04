@@ -69,7 +69,7 @@ if (empty($this->keyword) and !empty($this->category)) {
 			
 			<div class="row">
 				<div class="col-md-6">
-					<img src="<?php echo $product->file_url; ?>" class="img-rounded" style="width: 100%; border: solid #CAC9C9 1px;">
+					
 				</div>
 				<div class="col-md-6">
 					<h4><?php echo JHTML::link ($product->link, $product->product_name); ?></h4>
