@@ -5,16 +5,6 @@ defined('_JEXEC') or die('Restricted access');
 /* ID for jQuery dropdown */
 $ID = str_replace('.', '_', substr(microtime(true), -8, 8));
 $js="
-jQuery(document).ready(function() {
-	$('body').on(function() {
-		$('li.dropdown').show();
-	});
-	$('ul').on('mouseout', '.open', function() {
-		console.log(1);
-
-	});
-	$('body').off();
-});
 " ;
 
 		$document = JFactory::getDocument();

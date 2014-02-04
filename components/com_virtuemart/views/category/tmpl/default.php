@@ -165,24 +165,22 @@ if (!empty($this->keyword)) {
 
 </form>
 <!-- End Search Box -->
-	<?php } ?>
+<?php } ?>
+
+<?php if (!empty($this->products)): ?>
+	<?php foreach ($this->products as $key => $product): ?>
+		<?php if ($key === 0): ?>
+			<div class="col-md-6">
+				<img src="<?php echo $product->file_url; ?>">
+			</div>
+			<div class="col-md-6">.col-md-1</div>
+		<?php	endif; ?>
+	<?php endforeach; ?> 
+<?php endif; ?>
 
 <?php // Show child categories
 if (!empty($this->products)) {
 	?>
-<div class="orderby-displaynumber">
-	<div class="width70 floatleft">
-		<?php echo $this->orderByList['orderby']; ?>
-		<?php echo $this->orderByList['manufacturer']; ?>
-	</div>
-	<div class="width30 floatright display-number"><?php echo $this->vmPagination->getResultsCounter ();?><br/><?php echo $this->vmPagination->getLimitBox ($this->category->limit_list_step); ?></div>
-	<div class="vm-pagination">
-		<?php echo $this->vmPagination->getPagesLinks (); ?>
-		<span style="float:right"><?php echo $this->vmPagination->getPagesCounter (); ?></span>
-	</div>
-
-	<div class="clear"></div>
-</div> <!-- end of orderby-displaynumber -->
 
 <h1><?php echo $this->category->category_name; ?></h1>
 

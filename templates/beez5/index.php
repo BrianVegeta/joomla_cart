@@ -37,6 +37,17 @@ $doc->addScript($this->baseurl.'/templates/'.$this->template.'/javascript/md_sty
 <?php endif; ?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" >
 	<head>
+		<?php 
+			$search = array('mootools', 'caption.js', 'core', 'modal');
+	    // remove the js files
+	    foreach($this->_scripts as $key => $script) {
+	        foreach($search as $findme) {
+	            if(stristr($key, $findme) !== false) {
+	                unset($this->_scripts[$key]);
+	            }
+	        }
+	    }
+		?>
 		<jdoc:include type="head" />
 		<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/system/css/system.css" type="text/css" />
 		<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/css/position.css" type="text/css" media="screen,projection" />
@@ -89,57 +100,29 @@ $doc->addScript($this->baseurl.'/templates/'.$this->template.'/javascript/md_sty
             var resetTitle='<?php echo JText::_('TPL_BEEZ5_REVERT_STYLES_TO_DEFAULT', true); ?>';
             var smallerTitle='<?php echo JText::_('TPL_BEEZ5_DECREASE_SIZE', true); ?>';
 		</script>
-
+		<!-- bootstrap -->
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+		<script src="https://code.jquery.com/jquery.js"></script>
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 	</head>
 
 	<body>
 
 <div id="all">
 	<div id="back">
-	<?php if(!$templateparams->get('html5', 0)): ?>
-		<div id="header">
-			<?php else: ?>
-		<header id="header">
-			<?php endif; ?>
-				<div class="logoheader">
-					<h1 id="logo">
-
-					<?php if ($logo != null ): ?>
-					<img src="<?php echo $this->baseurl ?>/<?php echo htmlspecialchars($logo); ?>" alt="<?php echo htmlspecialchars($templateparams->get('sitetitle'));?>" />
-					<?php else: ?>
-					<?php echo htmlspecialchars($templateparams->get('sitetitle'));?>
-					<?php endif; ?>
-					<span class="header1">
-					<?php echo htmlspecialchars($templateparams->get('sitedescription'));?>
-					</span></h1>
-				</div><!-- end logoheader -->
-
-					<ul class="skiplinks">
-						<li><a href="#main" class="u2"><?php echo JText::_('TPL_BEEZ5_SKIP_TO_CONTENT'); ?></a></li>
-						<li><a href="#nav" class="u2"><?php echo JText::_('TPL_BEEZ5_JUMP_TO_NAV'); ?></a></li>
-						<?php if($showRightColumn ):?>
-						<li><a href="#additional" class="u2"><?php echo JText::_('TPL_BEEZ5_JUMP_TO_INFO'); ?></a></li>
-						<?php endif; ?>
-					</ul>
-					<h2 class="unseen"><?php echo JText::_('TPL_BEEZ5_NAV_VIEW_SEARCH'); ?></h2>
-					<h3 class="unseen"><?php echo JText::_('TPL_BEEZ5_NAVIGATION'); ?></h3>
-					<jdoc:include type="modules" name="position-1" />
-					<div id="line">
-					<div id="fontsize"></div>
-					<h3 class="unseen"><?php echo JText::_('TPL_BEEZ5_SEARCH'); ?></h3>
-					<jdoc:include type="modules" name="position-0" />
-					</div> <!-- end line -->
-		<div id="header-image">
-			<jdoc:include type="modules" name="position-15" />
-			<?php if ($this->countModules('position-15')==0): ?>
-				<img src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/images/fruits.jpg"  alt="<?php echo JText::_('TPL_BEEZ5_LOGO'); ?>" />
-			<?php endif; ?>
-		</div>
-		<?php if (!$templateparams->get('html5', 0)): ?>
-			</div><!-- end header -->
-		<?php else: ?>
-			</header><!-- end header -->
-		<?php endif; ?>
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#"><?php echo htmlspecialchars($app->getCfg('sitename')); ?></a>
+        </div>
+        <div class="navbar-collapse collapse">
+        	<jdoc:include type="module" name="virtuemart_category" style="custom" />
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
 		<div id="<?php echo $showRightColumn ? 'contentarea2' : 'contentarea'; ?>">
 					<div id="breadcrumbs">
 
