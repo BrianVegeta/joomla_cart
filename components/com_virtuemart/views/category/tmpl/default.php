@@ -65,7 +65,7 @@ if (empty($this->keyword) and !empty($this->category)) {
 <?php if (!empty($this->products)): ?>
 	<?php $product = $this->products[0]; ?>
 	<div class="row">
-		<div class="col-md-6" style="border: solid #CAC9C9 1px; margin-bottom: 20px;">
+		<div class="col-md-6" style="margin-bottom: 20px;">
 			<?php 
 				if ($product->file_url === 'images/stories/virtuemart/product/') {
 					$img_src = JURI::root() . 'components/com_virtuemart/assets/images/vmgeneral/noimage.gif';
@@ -74,10 +74,10 @@ if (empty($this->keyword) and !empty($this->category)) {
 				}
 			?>
 			<div class="row">
-				<div class="col-md-6" style="border: solid #CAC9C9 1px;">
+				<div class="col-md-6">
 					<img src="<?php echo $img_src; ?>" class="img-rounded" style="width: 100%; border: solid #CAC9C9 1px;">
 				</div>
-				<div class="col-md-6" style="border: solid #CAC9C9 1px;">
+				<div class="col-md-6">
 					<h4><?php echo JHTML::link ($product->link, $product->product_name); ?></h4>
 					<?php if (!empty($product->product_s_desc)) {
 						?>
@@ -120,7 +120,7 @@ if (empty($this->keyword) and !empty($this->category)) {
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6" style="border: solid #CAC9C9 1px; margin-bottom: 20px;">
+		<div class="col-md-6" style="margin-bottom: 20px;">
 			<?php 
 				$model = VmModel::getModel('Manufacturer'); 
 				$manufacturers = $model->getManufacturers(true, true,true);
@@ -133,7 +133,7 @@ if (empty($this->keyword) and !empty($this->category)) {
 	<div class="row">
 		<?php foreach ($this->products as $key => $product): ?>
 			<?php if ($key >= 1 && $key <= 2): ?>
-				<div class="col-md-6" style="border: solid #CAC9C9 1px; margin-bottom: 20px;">
+				<div class="col-md-6" style="margin-bottom: 20px;">
 					<?php 
 						if ($product->file_url === 'images/stories/virtuemart/product/') {
 							$img_src = JURI::root() . 'components/com_virtuemart/assets/images/vmgeneral/noimage.gif';
@@ -142,10 +142,10 @@ if (empty($this->keyword) and !empty($this->category)) {
 						}
 					?>
 					<div class="row">
-						<div class="col-md-4" style="border: solid #CAC9C9 1px;">
+						<div class="col-md-4">
 							<img src="<?php echo $img_src; ?>" class="img-rounded" style="width: 100%; border: solid #CAC9C9 1px;">
 						</div>
-						<div class="col-md-8" style="border: solid #CAC9C9 1px;">
+						<div class="col-md-8">
 							<h4><?php echo JHTML::link ($product->link, $product->product_name); ?></h4>
 							<div class="product-price price-mid marginbottom12" id="productPrice<?php echo $product->virtuemart_product_id ?>">
 								<?php
@@ -183,7 +183,7 @@ if (empty($this->keyword) and !empty($this->category)) {
 					</div>
 				</div>
 			<?php	elseif ($key >= 3): ?>
-				<div class="col-md-3" style="border: solid #CAC9C9 1px; margin-bottom: 20px;">
+				<div class="col-md-3" style="margin-bottom: 20px;">
 					<?php 
 						if ($product->file_url === 'images/stories/virtuemart/product/') {
 							$img_src = JURI::root() . 'components/com_virtuemart/assets/images/vmgeneral/noimage.gif';
@@ -192,10 +192,10 @@ if (empty($this->keyword) and !empty($this->category)) {
 						}
 					?>
 					<div class="row">
-						<div class="col-md-6" style="border: solid #CAC9C9 1px;">
+						<div class="col-md-5">
 							<img src="<?php echo $img_src; ?>" class="img-rounded" style="width: 100%; border: solid #CAC9C9 1px;">
 						</div>
-						<div class="col-md-6" style="border: solid #CAC9C9 1px;">
+						<div class="col-md-7">
 							<h6><?php echo JHTML::link ($product->link, $product->product_name); ?></h6>
 							<div class="product-price price-sm marginbottom12" id="productPrice<?php echo $product->virtuemart_product_id ?>">
 								<?php

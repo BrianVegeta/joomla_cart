@@ -6,22 +6,39 @@ defined('_JEXEC') or die('Restricted access');
 // ALL THE DISPLAY IS Done by Ajax using "hiddencontainer" ?>
 
 <!-- Virtuemart 2 Ajax Card -->
+<!--
+	<ul class="nav navbar-nav navbar-right">
+		<li><a href="#">Link</a></li>
+		<li class="dropdown">
+		  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+		  <ul class="dropdown-menu">
+		    <li><a href="#">Action</a></li>
+		    <li><a href="#">Another action</a></li>
+		    <li><a href="#">Something else here</a></li>
+		    <li class="divider"></li>
+		    <li><a href="#">Separated link</a></li>
+		  </ul>
+		</li>
+	</ul>	
+-->
+<ul class="nav navbar-nav navbar-right vmCartModule <?php echo $params->get('moduleclass_sfx'); ?>" id="vmCartModule">
+	<li class="dropdown">
+	  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+	  <ul class="dropdown-menu vm_cart_products">
+	  	<?php foreach ($data->products as $product): ?>
+		    <li>
+		    	<div class="product_row">
+						<span class="quantity"><?php echo  $product['quantity'] ?></span>&nbsp;x&nbsp;<span class="product_name"><?php echo  $product['product_name'] ?></span>
+					</div>
+		    </li>
+		  <?php endforeach; ?>  
+	  </ul>
+	</li>
+</ul>	
 <div class="vmCartModule <?php echo $params->get('moduleclass_sfx'); ?>" id="vmCartModule">
 <?php
 if ($show_product_list) {
 	?>
-	<div id="hiddencontainer" style=" display: none; ">
-		<div class="container">
-			<?php if ($show_price and $currencyDisplay->_priceConfig['salesPrice'][0]) { ?>
-			  <div class="prices" style="float: right;"></div>
-			<?php } ?>
-			<div class="product_row">
-				<span class="quantity"></span>&nbsp;x&nbsp;<span class="product_name"></span>
-			</div>
-
-			<div class="product_attributes"></div>
-		</div>
-	</div>
 	<div class="vm_cart_products">
 		<div class="container">
 

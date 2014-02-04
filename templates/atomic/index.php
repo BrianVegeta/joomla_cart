@@ -54,15 +54,19 @@ $app = JFactory::getApplication();
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 		<script src="https://code.jquery.com/jquery.js"></script>
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+		<script>jQuery.noConflict(true);</script>
 	</head>
 	<body>
 		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#"><?php echo htmlspecialchars($app->getCfg('sitename')); ?></a>
+          <a class="navbar-brand" href="/"><?php echo htmlspecialchars($app->getCfg('sitename')); ?></a>
         </div>
         <div class="navbar-collapse collapse">
         	<jdoc:include type="module" name="virtuemart_category" style="custom" />
+        	<ul class="nav navbar-nav navbar-right">
+		        <li><a href="/index.php/component/virtuemart/cart?Itemid=0">購物車</a></li>
+		      </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
@@ -79,23 +83,6 @@ $app = JFactory::getApplication();
 				<jdoc:include type="component" />
 			</div>
 			<hr />
-			<?php if($this->countModules('atomic-sidebar') || $this->countModules('position-7')
-			|| $this->countModules('position-4') || $this->countModules('position-5')
-			|| $this->countModules('position-3') || $this->countModules('position-6') || $this->countModules('position-8'))
-			: ?>
-				<div class="span-7 last">
-					
-					<jdoc:include type="modules" name="atomic-sidebar" style="sidebar" />
-					<jdoc:include type="modules" name="position-7" style="sidebar" />
-					<jdoc:include type="modules" name="position-4" style="sidebar" />
-					<jdoc:include type="modules" name="position-5" style="sidebar" />
-					<jdoc:include type="modules" name="position-6" style="sidebar" />
-					<jdoc:include type="modules" name="position-8" style="sidebar" />
-					<jdoc:include type="modules" name="position-3" style="sidebar" />
-				</div>
-
-			<?php endif; ?>
-
 			<div class="joomla-footer span-16 append-1">
 				<hr />
 				&copy;<?php echo date('Y'); ?> <?php echo htmlspecialchars($app->getCfg('sitename')); ?>

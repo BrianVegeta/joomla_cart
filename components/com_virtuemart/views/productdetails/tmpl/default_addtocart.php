@@ -27,9 +27,9 @@ if($step==0)
 $alert=JText::sprintf ('COM_VIRTUEMART_WRONG_AMOUNT_ADDED', $step);
 ?>
 
-<div class="addtocart-area">
+<div class="addtocart-area pull-right product-cart">
 
-	<form method="post" class="product js-recalculate" action="<?php echo JRoute::_ ('index.php',false); ?>">
+	<form id="add_cart_form" method="post" class="product js-recalculate" action="<?php echo JRoute::_ ('index.php',false); ?>">
 		<input name="quantity" type="hidden" value="<?php echo $step ?>" />
 		<?php // Product custom_fields
 		if (!empty($this->product->customfieldsCart)) {
@@ -76,6 +76,9 @@ $alert=JText::sprintf ('COM_VIRTUEMART_WRONG_AMOUNT_ADDED', $step);
 		<div class="addtocart-bar">
 
 <script type="text/javascript">
+		$("#add_cart_form").on('ajax:complete', function() {
+			alert(1);
+   	});
 		function check(obj) {
  		// use the modulus operator '%' to see if there is a remainder
 		remainder=obj.value % <?php echo $step?>;
@@ -87,6 +90,7 @@ $alert=JText::sprintf ('COM_VIRTUEMART_WRONG_AMOUNT_ADDED', $step);
  			}
  		return true;
  		}
+
 </script> 
 
 		<?php // Display the quantity box
@@ -101,20 +105,6 @@ $alert=JText::sprintf ('COM_VIRTUEMART_WRONG_AMOUNT_ADDED', $step);
 				if (!( VmConfig::get('askprice', 0) and empty($tmpPrice) ) ) {
 					?>
 					<!-- <label for="quantity<?php echo $this->product->virtuemart_product_id; ?>" class="quantity_box"><?php echo JText::_ ('COM_VIRTUEMART_CART_QUANTITY'); ?>: </label> -->
-					<span class="quantity-box">
-						<input type="text" class="quantity-input js-recalculate" name="quantity[]" onblur="check(this);"
-							   value="<?php if (isset($this->product->step_order_level) && (int)$this->product->step_order_level > 0) {
-									echo $this->product->step_order_level;
-								} else if(!empty($this->product->min_order_level)){
-									echo $this->product->min_order_level;
-								}else {
-									echo '1';
-								} ?>"/>
-					</span>
-					<span class="quantity-controls js-recalculate">
-					<input type="button" class="quantity-controls quantity-plus"/>
-					<input type="button" class="quantity-controls quantity-minus"/>
-					</span>
 					<?php // Display the quantity box END
 
 					// Display the add to cart button ?>
