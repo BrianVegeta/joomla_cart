@@ -53,4 +53,10 @@ function modChrome_sidebar($module, &$params, &$attribs)
 		<?php echo $module->content; ?>
 	<?php endif;
 }
+function modChrome_custom($module, &$params, &$attribs)
+{
+	if (!empty ($module->content)) : ?>
+		<?php echo $module->content; ?>
+	<?php endif;
+}
 ?>

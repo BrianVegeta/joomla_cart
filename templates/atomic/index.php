@@ -17,6 +17,17 @@ $app = JFactory::getApplication();
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" >
 	<head>
+		<?php 
+			$search = array('mootools', 'caption.js', 'core', 'modal');
+	    // remove the js files
+	    foreach($this->_scripts as $key => $script) {
+	        foreach($search as $findme) {
+	            if(stristr($key, $findme) !== false) {
+	                unset($this->_scripts[$key]);
+	            }
+	        }
+	    }
+		?>
 		<!-- The following JDOC Head tag loads all the header and meta information from your site config and content. -->
 		<jdoc:include type="head" />
 
@@ -48,41 +59,19 @@ $app = JFactory::getApplication();
 		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Bootstrap theme</a>
+          <a class="navbar-brand" href="#"><?php echo htmlspecialchars($app->getCfg('sitename')); ?></a>
         </div>
         <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-          	<jdoc:include type="module" name="virtuemart_category" style="sidebar" />
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-          </ul>
+        	<jdoc:include type="module" name="virtuemart_category" style="custom" />
         </div><!--/.nav-collapse -->
       </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 		<div class="container">
-			<hr class="space" />
-			<div class="joomla-header span-16 append-1">
-				<h1><?php echo htmlspecialchars($app->getCfg('sitename')); ?></h1>
-			</div>
 			<?php if($this->countModules('atomic-search') or $this->countModules('position-0')) : ?>
 				<div class="joomla-search span-7 last">
 	  	 			<jdoc:include type="modules" name="atomic-search" style="none" />
