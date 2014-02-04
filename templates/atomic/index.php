@@ -86,7 +86,29 @@ $app = JFactory::getApplication();
 
 		<div class="container">
 			<div class="span-16 append-1">
-				
+				<?php if($this->countModules('atomic-topquote') or $this->countModules('position-15') ) : ?>
+					<jdoc:include type="modules" name="atomic-topquote" style="none" />
+					<jdoc:include type="modules" name="position-15" style="none" />
+
+				<?php endif; ?>
+					<jdoc:include type="message" />
+					<jdoc:include type="component" />
+					<hr />
+				<?php if($this->countModules('atomic-bottomleft') or $this->countModules('position-11')) : ?>
+				 	<div class="span-7 colborder">
+						<jdoc:include type="modules" name="atomic-bottomleft" style="bottommodule" />
+						<jdoc:include type="modules" name="position-11" style="bottommodule" />
+	      	</div>
+	      <?php endif; ?>
+	      <?php if($this->countModules('atomic-bottommiddle') or $this->countModules('position-9')
+					or $this->countModules('position-10')) : ?>
+					<div class="span-7 last">
+	      		<jdoc:include type="modules" name="atomic-bottommiddle" style="bottommodule" />
+						<jdoc:include type="modules" name="position-9" style="bottommodule" />
+						<jdoc:include type="modules" name="position-10" style="bottommodule" />
+
+					</div>
+				<?php endif; ?>
 			</div>
 			<?php if($this->countModules('atomic-sidebar') || $this->countModules('position-7')
 			|| $this->countModules('position-4') || $this->countModules('position-5')
